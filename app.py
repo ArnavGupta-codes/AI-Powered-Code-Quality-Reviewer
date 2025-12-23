@@ -40,19 +40,19 @@ def analyze_code():
         file.save(filepath)
         
         try:
-            # Analyze the file
-            results = analyze_file(filepath)
+            # Analyze the file (returns tuple: overall, scores, metrics)
+            overall, scores, metrics = analyze_file(filepath)
             
             return jsonify({
                 'success': True,
                 'filename': filename,
                 'results': {
-                    'readability': round(results['readability'], 1),
-                    'maintainability': round(results['maintainability'], 1),
-                    'complexity': round(results['complexity'], 1),
-                    'security': round(results['security'], 1),
-                    'overall': round(results['overall'], 1),
-                    'metrics': results['metrics']
+                    'readability': round(scores['readability'] * 100, 1),
+                    'maintainability': round(scores['maintainability'] * 100, 1),
+                    'complexity': round(scores['complexity'] * 100, 1),
+                    'security': round(scores['security'] * 100, 1),
+                    'overall': round(overall * 100, 1),
+                    'metrics': metrics
                 }
             })
         finally:
