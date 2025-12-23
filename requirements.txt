@@ -6,3 +6,6 @@ pylint>=2.10.0
 bandit>=1.7.4
 lizard>=1.17.0
 joblib>=1.0.0
+flask>=2.0.0
+gunicorn>=20.0.0
+werkzeug>=2.0.0

@@ -2,12 +2,19 @@
 
 A machine learning system that evaluates code quality across multiple dimensions: readability, maintainability, complexity, and security.
 
+## Try It Live
+
+Click here to analyze your code: **[Live Demo](https://ai-code-quality-reviewer.onrender.com)** (deployed on Render)
+
+Simply upload your code file and get instant quality scores!
+
 ## Overview
 
 This project uses Random Forest regression models trained on 218 code samples across three programming languages (C++, Python, Java) to predict code quality metrics on a 0-100 scale.
 
 ## Features
 
+- Web interface for easy file uploads
 - Multi-language support: C++, Python, Java
 - Four quality dimensions:
   - Readability (0-100)
@@ -25,7 +32,15 @@ This project uses Random Forest regression models trained on 218 code samples ac
 pip install -r requirements.txt
 ```
 
-### Usage
+### Web Interface (Recommended)
+
+```bash
+python app.py
+```
+
+Then open http://localhost:5000 in your browser.
+
+### Command Line
 
 ```bash
 python3 models/predict.py path/to/your/code.cpp
@@ -138,6 +153,24 @@ The system extracts 11 features per code file:
 - Analyzes cyclomatic complexity
 - Extracts token and comment metrics
 
+## Deployment
+
+Deploy the web application for recruiters and others to use:
+
+### Quick Deploy to Render (Free)
+
+1. Push to GitHub (already done!)
+2. Go to https://render.com
+3. Click "New +" → "Web Service"
+4. Connect your GitHub repository
+5. Set Build Command: `pip install -r requirements.txt`
+6. Set Start Command: `gunicorn app:app`
+7. Click "Deploy"
+
+Your app will be live in 2-3 minutes!
+
+See DEPLOYMENT.md for detailed instructions and other deployment options.
+
 ## Dataset
 
 The training dataset contains 218 code samples:
@@ -154,6 +187,8 @@ Version 2.0 added:
 - Expanded score range from 60-72 to 14-91
 - 5-fold cross-validation for more reliable metrics
 - 700 estimator Random Forest (improved from 500)
+- Web interface for easy file uploads
+- Deployment-ready with Procfile and runtime configuration
 
 See SOLUTION_SUMMARY.md for details.
 
@@ -170,12 +205,15 @@ See SOLUTION_SUMMARY.md for details.
 - clang-tidy (C++ static analysis)
 - cppcheck (C++ checking)
 - checkstyle (Java checking)
+- Flask (web interface)
+- gunicorn (production server)
 
 ## Documentation
 
 - ACCURACY_RESULTS.md - Model performance metrics
 - MODEL_IMPROVEMENT_REPORT.md - Technical details
 - SOLUTION_SUMMARY.md - Recent improvements and changes
+- DEPLOYMENT.md - How to deploy the application
 
 ## Future Improvements
 

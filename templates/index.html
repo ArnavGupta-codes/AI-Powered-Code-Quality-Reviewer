@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Quality Reviewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI-Powered Code Quality Reviewer</h1>
+            <p>Analyze your code across C++, Python, and Java</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="upload-box">
+                    <input type="file" id="fileInput" accept=".cpp,.java,.py,.c,.cc,.cxx" />
+                    <label for="fileInput" class="upload-label">
+                        <span class="upload-icon">📁</span>
+                        <span class="upload-text">Click to upload or drag and drop</span>
+                        <span class="file-types">Supported: C++, Python, Java</span>
+                    </label>
+                </div>
+                <button id="analyzeBtn" class="analyze-btn" disabled>Analyze Code</button>
+            </section>
+
+            <section id="results" class="results-section" style="display: none;">
+                <div class="filename-display">
+                    <h2 id="filename"></h2>
+                </div>
+
+                <div class="scores-grid">
+                    <div class="score-card readability">
+                        <div class="score-label">Readability</div>
+                        <div class="score-value" id="readabilityScore">0</div>
+                        <div class="score-bar">
+                            <div class="score-fill" id="readabilityFill"></div>
+                        </div>
+                    </div>
+
+                    <div class="score-card maintainability">
+                        <div class="score-label">Maintainability</div>
+                        <div class="score-value" id="maintainabilityScore">0</div>
+                        <div class="score-bar">
+                            <div class="score-fill" id="maintainabilityFill"></div>
+                        </div>
+                    </div>
+
+                    <div class="score-card complexity">
+                        <div class="score-label">Complexity</div>
+                        <div class="score-value" id="complexityScore">0</div>
+                        <div class="score-bar">
+                            <div class="score-fill" id="complexityFill"></div>
+                        </div>
+                    </div>
+
+                    <div class="score-card security">
+                        <div class="score-label">Security</div>
+                        <div class="score-value" id="securityScore">0</div>
+                        <div class="score-bar">
+                            <div class="score-fill" id="securityFill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overall-score">
+                    <h3>Overall Score</h3>
+                    <div class="overall-value" id="overallScore">0</div>
+                    <p id="overallMessage"></p>
+                </div>
+
+                <div class="metrics-section">
+                    <h3>Code Metrics</h3>
+                    <div class="metrics-table">
+                        <div class="metric-row">
+                            <span class="metric-label">Lines of Code:</span>
+                            <span class="metric-value" id="metricsLOC">-</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Cyclomatic Complexity:</span>
+                            <span class="metric-value" id="metricsCyclomatic">-</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Comment Density:</span>
+                            <span class="metric-value" id="metricsComments">-</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-label">Quality Issues:</span>
+                            <span class="metric-value" id="metricsIssues">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="newFileBtn" class="analyze-btn secondary">Analyze Another File</button>
+            </section>
+
+            <section id="loading" class="loading-section" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing your code...</p>
+            </section>
+
+            <section id="error" class="error-section" style="display: none;">
+                <p id="errorMessage"></p>
+            </section>
+        </main>
+
+        <footer>
+            <p>AI-Powered Code Quality Reviewer v1.0 | <a href="https://github.com/ArnavGupta-codes/AI-Powered-Code-Quality-Reviewer" target="_blank">View on GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
