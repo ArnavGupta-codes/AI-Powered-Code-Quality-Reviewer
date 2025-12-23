@@ -4,7 +4,7 @@ A machine learning system that evaluates code quality across multiple dimensions
 
 ## Try It Live
 
-Click here to analyze your code: **[Live Demo](https://ai-code-quality-reviewer.onrender.com)** (deployed on Render)
+Click here to analyze your code: **[Live Demo](https://code-quality-reviewer.onrender.com)** (deployed on Render)
 
 Simply upload your code file and get instant quality scores!
 
